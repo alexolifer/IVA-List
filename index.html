@@ -1,61 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt_BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVA Listener</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVA Listener</title>
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
+  <div id="paperContainer">
     <div class="title">
-        <h2>Relatório Trimestral de IVA - Portugal</h2>
+      <h2>Relatório Trimestral de IVA - Portugal</h2>
     </div>
     <div class="topLine">
-        <p class="receive">RECIBO</p>
-        <p class="client">CLIENTE</p>
-        <p class="date">DATA</p>
-        <p class="value">VALOR S/ IVA</p>
-        <p class="valueIVA">VALOR IVA</p>
-        <p class="valueIRS">IRS(RF)</p>
+      <p class="receive">RECIBO</p>
+      <p class="client">CLIENTE</p>
+      <p class="date">DATA</p>
+      <p class="value">VALOR S/ IVA</p>
+      <p class="valueIVA">VALOR IVA</p>
+      <p class="valueIRS">IRS(RF)</p>
     </div>
-    <div class="line">
-        <p class="receive">001</p>
-        <p class="client">Empresa</p>
-        <p class="date">00/00/0000</p>
-        <p class="value">500,00 €</p>
-        <p class="valueIVA">115,00 €</p>
-        <p class="valueIRS">125,00 €</p>
-    </div>
-    <div class="line">
-        <p class="receive">001</p>
-        <p class="client">Empresa</p>
-        <p class="date">00/00/0000</p>
-        <p class="value">500,00 €</p>
-        <p class="valueIVA">115,00 €</p>
-        <p class="valueIRS">125,00 €</p>
-    </div>
-    <div class="monthShift">
-        <hr>
-    </div>
-    <div class="line">
-        <p class="receive">001</p>
-        <p class="client">Empresa</p>
-        <p class="date">00/00/0000</p>
-        <p class="value">500,00 €</p>
-        <p class="valueIVA">115,00 €</p>
-        <p class="valueIRS">125,00 €</p>
-    </div>
-    <form>
-        <input type="text" name="receive" placeholder="Nº Recibo">
-        <input type="text" name="employer" placeholder="Empresa">
-        <input type="date" name="date" id="">
-        <input type="text" name="value" placeholder="Valor da fatura">
-        <input type="button" value="Enviar">
+    
+    <section id="receivesContainer">
+      
+    </section>
 
+    <div class="baseline">
+      <p class="totalTitle">TOTAL</p>
+      <p class="totalValue"></p>
+      <p class="totalIVA"></p>
+      <p class="totalIRS"></p>
+    </div>
+    
+    <form>
+      <input type="number" name="receive" id="setReceive" placeholder="Nº Recibo" required />
+      <input type="text" name="employer" id="setClient" placeholder="Empresa" required />
+      <input type="date" name="date" id="setDate" required />
+      <input type="number" name="value" id="setValue" placeholder="Valor" required />
+
+      <input id="addLine" type="button" value="Enviar" onclick="adicionar()">
     </form>
-    <script src="assets/js/main.js"></script>
+
+  </div>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

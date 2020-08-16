@@ -1,0 +1,11 @@
+.baseline {
+  display: grid;
+  grid-template-columns: auto 70px 70px 60px;
+  padding: 20px 0 0 0;
+  font-weight: bold;
+  font-size: 14px;
+
+  p {
+    text-align: center;
+  }
+}

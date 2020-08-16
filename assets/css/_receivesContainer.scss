@@ -1,11 +1,12 @@
-.topLine{
+#receivesContainer div{
     display: grid;
     grid-template-columns: 70px 245px 80px 70px 70px 60px;
-    padding: 20px 0 0 0;
-    font-weight: bold;
-    font-size: 14px;
 
     p{
         text-align: center;
+    }
+
+    p.client{
+        text-align: left;
     }
 }

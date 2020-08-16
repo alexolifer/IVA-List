@@ -1,46 +1,102 @@
-(function () {
+const quarter = window.prompt('Digite o numero do trimestre da planilha');
+const year = window.prompt('Digite o ano da planilha');
 
-    /*function toArray(obj) {
-        return [].slice.call(obj);
+const title = document.querySelector('h2');
+
+if (quarter != null && year != null && quarter != '' && year != '') {
+  title.innerHTML = `RECIBOS ${quarter}º TRIMESTRE DE ${year}`
+} else {
+  title.innerHTML = "Relatório Trimestral de IVA - Portugal"
+}
+
+var receivesLists = document.getElementById('receivesContainer');
+
+var receiveNumber = document.querySelector('input#setReceive');
+var client = document.querySelector('input#setClient');
+var date = document.querySelector('input#setDate');
+var receiveValue = document.querySelector('input#setValue');
+
+var totalValue = [];
+var ivaValues = [];
+var irsValues = [];
+
+var showTotal = document.querySelector('p.totalValue');
+var showTotalIVA = document.querySelector('p.totalIVA');
+var showTotalIRS = document.querySelector('p.totalIRS');
+
+function ivaCalc(v) {
+  return ((v * 0.23).toFixed(2));
+}
+
+function irsCalc(v) {
+  return ((v * 0.25).toFixed(2));
+}
+
+function convert(date) {
+  var datearray = date.split("-");
+  var newdate = datearray[2] + '/' + datearray[1] + '/' + datearray[0];
+  return newdate;
+}
+
+function adicionar() {
+  
+  if (receiveNumber.value != '' && client.value != '' && date.value != '' && receiveValue.value != '') {
+
+    totalValue.push(receiveValue.value);
+    ivaValues.push(ivaCalc(receiveValue.value));
+    irsValues.push(irsCalc(receiveValue.value));
+
+    let line = document.createElement('div');
+
+    line.innerHTML = `<p class='receive'> ${receiveNumber.value} </p>
+    <p class='client'> ${client.value} </p>
+    <p class='date'> ${convert(date.value)} </p>
+    <p class='value'> ${Number(receiveValue.value).toFixed(2)} €</p>
+    <p class='valueIVA'> ${ivaCalc(receiveValue.value)} €</p>
+    <p class='valueIRS'> ${irsCalc(receiveValue.value)} €</p>`;
+
+    receivesLists.appendChild(line);
+
+    let totalSum = 0;
+
+    for (let pos in totalValue) {
+      totalSum += Number(totalValue[pos]);
     }
 
-    function findIndex(elm, parent) {
-        var elms = toArray(parent.children);
-        return elms.indexOf(elm);
+    showTotal.innerHTML = `${(totalSum).toFixed(2)} €`;
+
+
+    let ivaTotalSum = 0;
+
+    for (let pos in ivaValues) {
+      ivaTotalSum += Number(ivaValues[pos]);
     }
 
-    function loadData(key) {
-        try {
-            return JSON.parse(localStorage.getItem(key));
-        } catch(err) {
-            console.log(err);
-        }
+    showTotalIVA.innerHTML = `${(ivaTotalSum).toFixed(2)} €`;
+
+
+    let irsTotalSum = 0;
+
+    for (let pos in irsValues) {
+      irsTotalSum += Number(irsValues[pos]);
     }
 
-    function saveData(key, data) {
-        try {
-            localStorage.setItem(key, JSON.stringify(data));
-        } catch(err) {
-            console.log(err);
-        }
-    }*/
+    showTotalIRS.innerHTML = `${(irsTotalSum).toFixed(2)} €`;
 
-    var calcList = loadData('ivaList') || [],
-        calcLine = document.getElementsByClassName('.line');
+    receiveNumber.value = '';
+    receiveNumber.focus();
+    client.value = '';
+    date.value = '';
+    receiveValue.value = '';
+  } else {
+    window.alert('É necessário preencher todos os campos.');
+  }
+}
 
+document.onkeydown = function(e){
+  var key = e.key;
 
-
-    function renderItem(item) {
-        return [
-            '<div class="line">',
-                '<p class="receive">001</p>',
-                '<p class="client">Empresa</p>',
-                '<p class="date">00/00/0000</p>',
-                '<p class="value">500,00 €</p>',
-                '<p class="valueIVA">115,00 €</p>',
-                '<p class="valueIRS">125,00 €</p>',
-            '</div>'
-        ].join('');
-    }
-
-})();
+  if(key == 'Enter'){
+    adicionar();
+  }
+};

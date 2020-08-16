@@ -1,26 +1,19 @@
-form{
-    padding: 10px 40px;
+form {
+  padding: 20px 0;
 
-        input[name=receive]{
-            width: 100px;
-        }
-        input[name=employer]{
-            width: 550px;
-        }
-        input[name=date]{
-            width: 150px;
-        }
-        input[name=value]{
-            width: 150px;
-        }
-        input[name=valueIVA]{
-            width: 150px;
-        }
-        input[name=valueIRS]{
-            width: 150px;
-        }
-
-
-
-
+  input[name="receive"] {
+    width: 95px;
+  }
+  input[name="employer"] {
+    width: 150px;
+  }
+  input[name="date"] {
+    width: 95;
+  }
+  input[name="value"] {
+    width: 80px;
+  }
+  input[id="addLine"] {
+    width: 60px;
+  }
 }
