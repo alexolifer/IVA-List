@@ -1,12 +1,12 @@
-#receivesContainer div{
-    display: grid;
-    grid-template-columns: 70px 245px 80px 70px 70px 60px;
+#receivesContainer div {
+  display: grid;
+  grid-template-columns: 70px 245px 80px 70px 70px 60px;
 
-    p{
-        text-align: center;
-    }
+  p {
+    text-align: center;
+  }
 
-    p.client{
-        text-align: left;
-    }
+  p.client {
+    text-align: left;
+  }
 }

@@ -1,7 +1,7 @@
 const quarter = window.prompt('Digite o numero do trimestre da planilha');
 const year = window.prompt('Digite o ano da planilha');
 
-const title = document.querySelector('h2');
+const title = document.querySelector('h3');
 
 if (quarter != null && year != null && quarter != '' && year != '') {
   title.innerHTML = `RECIBOS ${quarter}º TRIMESTRE DE ${year}`
@@ -32,14 +32,14 @@ function irsCalc(v) {
   return ((v * 0.25).toFixed(2));
 }
 
-function convert(date) {
+function dateConvert(date) {
   var datearray = date.split("-");
   var newdate = datearray[2] + '/' + datearray[1] + '/' + datearray[0];
   return newdate;
 }
 
 function adicionar() {
-  
+
   if (receiveNumber.value != '' && client.value != '' && date.value != '' && receiveValue.value != '') {
 
     totalValue.push(receiveValue.value);
@@ -50,7 +50,7 @@ function adicionar() {
 
     line.innerHTML = `<p class='receive'> ${receiveNumber.value} </p>
     <p class='client'> ${client.value} </p>
-    <p class='date'> ${convert(date.value)} </p>
+    <p class='date'> ${dateConvert(date.value)} </p>
     <p class='value'> ${Number(receiveValue.value).toFixed(2)} €</p>
     <p class='valueIVA'> ${ivaCalc(receiveValue.value)} €</p>
     <p class='valueIRS'> ${irsCalc(receiveValue.value)} €</p>`;
@@ -91,12 +91,20 @@ function adicionar() {
   } else {
     window.alert('É necessário preencher todos os campos.');
   }
-}
+};
 
-document.onkeydown = function(e){
+function addHR() {
+
+  let line = document.createElement('hr');
+
+  receivesLists.appendChild(line);
+
+};
+
+document.onkeydown = function (e) {
   var key = e.key;
 
-  if(key == 'Enter'){
+  if (key == 'Enter') {
     adicionar();
   }
 };
