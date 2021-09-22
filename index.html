@@ -4,58 +4,123 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IVA Listener</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <div id="paperContainer">
-      <div class="title">
-        <h3>Relatório Trimestral de IVA - Portugal</h3>
+    <div id="container" class="w-3/4 m-auto py-10">
+      <div class="mb-10">
+        <table id="" class="w-full text-center">
+          <thead>
+            <tr class="w-full grid grid-cols-6 bg-gray-300">
+              <th class="">RECIBO</th>
+              <th class="">CLIENTE</th>
+              <th class="">DATA</th>
+              <th class="">VALOR S/ IVA</th>
+              <th class="">VALOR IVA</th>
+              <th class="">IRS(RF)</th>
+            </tr>
+          </thead>
+          <tbody id="table-content" class="relative">
+            <template class="table-row">
+              <td>{{ receive }}</td>
+              <td>{{ client }}</td>
+              <td>{{ date }}</td>
+              <td>{{ value-pure }}</td>
+              <td>{{ value-iva }}</td>
+              <td>{{ value-iva }}</td>
+              <span class="absolute right-0 ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </span>
+            </template>
+          </tbody>
+        </table>
       </div>
-      <div class="topLine">
-        <p class="receive">RECIBO</p>
-        <p class="client">CLIENTE</p>
-        <p class="date">DATA</p>
-        <p class="value">VALOR S/ IVA</p>
-        <p class="valueIVA">VALOR IVA</p>
-        <p class="valueIRS">IRS(RF)</p>
+      <div id="form-container">
+        <form
+          id="receive-form"
+          action=""
+          class="w-full grid grid-cols-6 gap-4 text-center"
+        >
+          <div>
+            <input
+              class="border rounded"
+              type="text"
+              id="receive_number"
+              name="receive_number"
+              value=""
+              placeholder="&nbsp;&nbsp;Número do Recibo"
+              
+            />
+          </div>
+          <div>
+            <input
+              class="border rounded"
+              type="text"
+              id="client-name"
+              name="client-name"
+              value=""
+              placeholder="&nbsp;&nbsp;Nome do Cliente"
+              
+            />
+          </div>
+          <div>
+            <input
+              class="border rounded"
+              type="date"
+              id="receive-date"
+              name="receive-date"
+              value=""
+              
+            />
+          </div>
+          <div>
+            <input
+              class="border rounded"
+              type="text"
+              id="value-without-taxes"
+              name="value-without-taxes"
+              value=""
+              placeholder="&nbsp;&nbsp;Valor sem IVA"
+              
+            />
+          </div>
+          <div>
+            <input
+              class="border rounded"
+              type="text"
+              id="value-iva"
+              name="value-iva"
+              value=""
+              placeholder="&nbsp;&nbsp;Valor do IVA"
+              
+            />
+          </div>
+          <div>
+            <input
+              class="border rounded"
+              type="text"
+              id="value-irs"
+              name="value-irs"
+              value=""
+              placeholder="&nbsp;&nbsp;Valor Retido na Fonte"
+              
+            />
+          </div>
+          <button
+            id="form-btn"
+            type="submit"
+            class="col-end-7 py-2 md:rounded bg-blue-500 text-white"
+          >
+            Enviar
+          </button>
+        </form>
       </div>
-
-      <section id="receivesContainer"></section>
-
-      <div class="baseline">
-        <p class="totalTitle">TOTAL</p>
-        <p class="totalValue"></p>
-        <p class="totalIVA"></p>
-        <p class="totalIRS"></p>
-      </div>
-
-      <form>
-        <input
-          type="number"
-          name="receive"
-          id="setReceive"
-          placeholder="Nº Recibo"
-        />
-        <input
-          type="text"
-          name="employer"
-          id="setClient"
-          placeholder="Empresa"
-        />
-        <input type="date" name="date" id="setDate" />
-
-        <input type="number" name="value" id="setValue" placeholder="Valor" />
-
-        <input
-          id="addLine"
-          type="button"
-          value="Enviar"
-          onclick="adicionar()"
-        />
-
-        <input id="addLine" type="button" value="Linha" onclick="addHR()" />
-      </form>
     </div>
     <script src="assets/js/main.js"></script>
   </body>
